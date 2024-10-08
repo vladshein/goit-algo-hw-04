@@ -64,27 +64,53 @@ def merge(left, right):
 setup_code = '''
 array_5 = [12, 11, 13, 5, 6, 7]
 '''
+
+setup_code2 = '''
+array_20 = [12, 11, 13, 5, 6, 7,
+            12, 11, 13, 5, 6, 7,
+            12, 11, 13, 5, 6, 7,
+            12, 11, 13, 5, 6, 7,
+            12, 11, 13, 5, 6, 7]
+'''
 # Приклад використання
 # Використання та замір Timsort з бібліотеки python 
 test_code_sorted = '''
 sorted_list = sorted(array_5)
 '''
+test_code_sorted2 = '''
+sorted_list = sorted(array_20)
+'''
+
 execution_time = timeit.timeit(stmt=test_code_sorted, setup=setup_code, number=100000)
 print(f"Execution time of sorted: {execution_time} seconds")
+execution_time = timeit.timeit(stmt=test_code_sorted2, setup=setup_code2, number=100000)
+print(f"Execution time of sorted 2: {execution_time} seconds")
 
 # Використання та замір сортування вставками 
 test_code_insertion = '''
 from __main__ import insertion_sort
 sorted_list = insertion_sort(array_5)
 '''
+test_code_insertion2 = '''
+from __main__ import insertion_sort
+sorted_list = insertion_sort(array_20)
+'''
+
 execution_time = timeit.timeit(stmt=test_code_insertion, setup=setup_code, number=100000)
 print(f"Execution time of insertion sort: {execution_time} seconds")
+execution_time = timeit.timeit(stmt=test_code_insertion2, setup=setup_code2, number=100000)
+print(f"Execution time of insertion sort 2: {execution_time} seconds")
 
 # Використання та замір сортування злиттям 
 test_code_merge = '''
 from __main__ import merge_sort, merge
 sorted_list = merge_sort(array_5)
 '''
+test_code_merge2 = '''
+from __main__ import merge_sort, merge
+sorted_list = merge_sort(array_20)
+'''
 execution_time = timeit.timeit(stmt=test_code_merge, setup=setup_code, number=100000)
 print(f"Execution time of merge sort: {execution_time} seconds")
-
+execution_time = timeit.timeit(stmt=test_code_merge2, setup=setup_code2, number=100000)
+print(f"Execution time of merge sort 2: {execution_time} seconds")
